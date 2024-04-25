@@ -174,19 +174,20 @@ for n_snr = 1:N_SNR
         end 
         % M-QAM Modulation
         Modulated_Bits_Coded  = 1/sqrt(Pow) * qammod(TxData_Coded,M); 
-
-        % Benchmark: Pilots and band guard insertion in the DD domain
-        txBlocks = zeros(K,nSym);
-        txBlocks(pilotGuardSize+1:end,:) = Modulated_Bits_Coded;
-        txBlocks(1,1) = pilotPower;
-
+        
         %% OTFS precodification ISFFT
-        x_OTFS_data_raviteja = hPrecoder.encode(txBlocks);
         x_OTFS_data_proposed = hPrecoder.encode(Modulated_Bits_Coded);
         % Proposed: Pilots and band guard insertion in the TF domain
         s_OTFS_proposed = zeros(K,nSym);
         s_OTFS_proposed(data_locations,:) = x_OTFS_data_proposed;
         s_OTFS_proposed(pilots_locations,:) = repmat(pilots,1,nSym);
+
+        % Benchmark: Pilots and band guard insertion in the DD domain
+        txBlocks = zeros(K,nSym);
+        txBlocks(pilotGuardSize+1:end,:) = Modulated_Bits_Coded;
+        txBlocks(1,1) = pilotPower;
+        %% OTFS precodification ISFFT
+        x_OTFS_data_raviteja = hPrecoder.encode(txBlocks);
 
         %% Time domain 
         s_OTFS_TF_raviteja = W_Spred' * x_OTFS_data_raviteja;
