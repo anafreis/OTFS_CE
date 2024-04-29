@@ -1,4 +1,4 @@
-# OTFS_CE
+# LSTM-Based Channel Estimation For OTFS Modulation
 This project presents codes for the LS-LSTM-NN channel estimation affected by HPA impairments proposed for OTFS channels in "LSTM-Based Time-Frequency Domain Channel Estimation for OTFS Modulation".
 
 This project presents:
@@ -19,7 +19,7 @@ The project's folder is structured as follows:
 
 Additional files:
 	+ Matlab_codes/[NLD;hpa_saleh;function_HPA_WONG5_Poly;charac_hpa;]: Are related to the Memoryless Polynomial HPA described in [3].
-	+ Matlab_codes/circulant: Is used to obtain the circulant matrix in the TCE method.
+	+ Matlab_codes/circulant: Used to obtain the circulant matrix in the TCE method.
 ----------------------------------------------------------------------------------------------------------------------
 [1] P. Raviteja, K. T. Phan, and Y. Hong, “Embedded pilot-aided channel estimation for OTFS in delay–doppler channels,” IEEE Transactions on Vehicular Technology, vol. 68, no. 5, pp. 4906–4917, 2019
 [2] G. Acosta-Marum and M. A. Ingram, ‘‘Six time- and frequency-selective empirical channel models for vehicular wireless LANs,’’ IEEE Veh. Technol. Mag., vol. 2, no. 4, pp. 4–11, Dec. 2007.
