@@ -10,8 +10,8 @@ v = 300;            % Moving speed of user in km/h
 IBO = 4;
 
 nSym                    = 14;    % Number of symbols within one frame
-N_CH                    = [2000; 2000; 2000; 2000; 2000; 2000; 2000; 2000; 10000]; % Number of channel realizations
-EbN0dB                  = 30;    % bit to noise ratio
+N_CH                    = [2000; 2000; 2000; 2000; 2000; 2000; 10000]; % Number of channel realizations
+EbN0dB                  = 0:5:40;
 
 pathdata = [num2str(nSym) 'Sym_' mod '_VehA_' num2str(v) 'kmh_IBO' num2str(IBO)'];
 
@@ -83,13 +83,14 @@ init_seed = 22;
 numtx = 1;            % Number of transmit antennas
 numrx = 1;            % Number of receive antennas
 D = 1/(nSym*nFFT*Tsignal); % Doppler resolution
-%% Bit to Noise Ratio
+
+%%%%%%%%%%%%%%%%%
 EbN0Lin                   = 10.^(EbN0dB/10);
 %snr_p = Ep/KN0 => N0 = Ep/(K*snr_p)
 N0 = Ep./(nFFT*EbN0Lin);
 
 %% --------- Scrambler Parameters ---------------------------------------------
-scramInit                 = 93; % As specidied in IEEE 802.11p Standard [1011101] in binary representation
+scramInit                 = 93; % As specified in IEEE 802.11p Standard [1011101] in binary representation
 %% --------- Convolutional Coder Parameters -----------------------------------
 constlen                  = 7;
 trellis                   = poly2trellis(constlen,[171 133]);
